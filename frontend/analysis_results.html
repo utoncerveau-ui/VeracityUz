@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#003765",
+              "on-primary-container": "#86a0cd",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#001c38",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#002141",
+              "on-error-container": "#93000a",
+              "outline-variant": "#c4c6cf",
+              "primary-fixed": "#d6e3ff",
+              "surface-container-low": "#f1f4f6",
+              "surface-container-high": "#e5e9eb",
+              "on-background": "#181c1e",
+              "on-primary-fixed": "#001b3c",
+              "error": "#ba1a1a",
+              "primary-container": "#1a365d",
+              "on-secondary-container": "#586377",
+              "on-surface-variant": "#43474e",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "surface-bright": "#f7fafc",
+              "tertiary-fixed-dim": "#a2c9ff",
+              "secondary-fixed-dim": "#bcc7dd",
+              "outline": "#74777f",
+              "background": "#f7fafc",
+              "surface-variant": "#e0e3e5",
+              "inverse-on-surface": "#eef1f3",
+              "primary": "#002045",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#68a2e9",
+              "secondary-container": "#d5e0f7",
+              "on-tertiary-fixed-variant": "#004881",
+              "secondary": "#545f72",
+              "on-surface": "#181c1e",
+              "surface-dim": "#d7dadc",
+              "inverse-surface": "#2d3133",
+              "error-container": "#ffdad6",
+              "surface-tint": "#455f88",
+              "surface": "#f7fafc",
+              "on-secondary-fixed": "#111c2c",
+              "secondary-fixed": "#d8e3fa",
+              "surface-container": "#ebeef0",
+              "primary-fixed-dim": "#adc7f7",
+              "tertiary-fixed": "#d3e4ff",
+              "inverse-primary": "#adc7f7",
+              "on-primary-fixed-variant": "#2d476f",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#3c475a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-mesh font-body text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-[#f7fafc] dark:bg-slate-900 full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-8 h-16 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-[#002045] dark:text-blue-400 font-headline">VeracityUz</span>
+                <div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
+                    <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors" href="landing_page.html">Asosiy</a>
+                    <a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1" href="verification_dashboard.html">Tahlil</a>
+                    <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors" href="algorithm.html">Algoritm</a>
+                </div>
+</div>
+</div>
+</nav>
+<main class="flex-grow max-w-7xl mx-auto w-full px-8 py-12">
+<!-- Verdict Hero Section -->
+<section class="mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<!-- Main Verdict Card -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-10 rounded-xl relative overflow-hidden flex flex-col justify-center">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary-container/5 rounded-bl-full"></div>
+<div class="flex flex-col md:flex-row md:items-end gap-6">
+<div>
+<span class="font-label text-xs tracking-widest uppercase text-secondary mb-2 block">Xulosa</span>
+<h1 id="resultVerdict" class="font-headline text-5xl font-extrabold tracking-tight">Yuklanmoqda...</h1>
+<p id="resultSubtitle" class="text-secondary mt-4 max-w-md">Tahlil natijalari olinmoqda, iltimos kuting...</p>
+</div>
+<div class="flex flex-col items-center md:items-end ml-auto">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-tertiary-container" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="29.15" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span id="resultConfidence" class="font-headline text-2xl font-bold text-tertiary">--%</span>
+<span class="text-[10px] text-secondary font-medium uppercase tracking-tighter">Ishonch</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Sidebar -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="bg-surface-container-low p-8 rounded-xl flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-headline font-bold text-lg mb-2">Natijani ulashish</h3>
+<p class="text-xs text-secondary leading-relaxed">Ushbu tahlil natijasini ijtimoiy tarmoqlarda ulashing va dezinformatsiyaga qarshi kurashga hissa qo'shing.</p>
+</div>
+                    <div class="flex flex-col gap-3 mt-6">
+                        <button class="bg-primary text-on-primary font-headline font-semibold py-3 px-6 rounded-md flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+                            <span class="material-symbols-outlined text-sm">share</span> Natijani ulashish
+                        </button>
+<button class="bg-surface-container-highest text-secondary font-headline font-semibold py-3 px-6 rounded-md flex items-center justify-center gap-2 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-sm">flag</span> Xatoni xabar qilish
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Article Text Content -->
+<div class="lg:col-span-7">
+<div class="flex items-center gap-4 mb-8">
+<div class="h-px flex-grow bg-outline-variant opacity-15"></div>
+<span class="font-headline font-bold text-sm text-tertiary">Asl matn tahlili</span>
+<div class="h-px flex-grow bg-outline-variant opacity-15"></div>
+</div>
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-xl leading-relaxed text-on-background font-body text-md shadow-sm border border-outline-variant/5">
+<h2 class="font-headline text-2xl font-bold mb-6">Tahlil qilingan matn</h2>
+<div id="resultArticleBody" class="mb-4 text-justify whitespace-pre-wrap">
+<!-- Dynamic Text Injected Here -->
+</div>
+<div class="mt-12 flex gap-4">
+                        <span id="chipConfirmed" class="flex items-center gap-1.5 text-[10px] font-bold text-on-primary-container bg-surface-container-high px-3 py-1 rounded-full uppercase tracking-widest transition-all opacity-50">
+                            <span class="w-2 h-2 rounded-full bg-primary"></span> <span id="spanConfirmedCount">Tayyorlanmoqda...</span>
+                        </span>
+                        <span id="chipSuspicious" class="flex items-center gap-1.5 text-[10px] font-bold text-error bg-error-container/30 px-3 py-1 rounded-full uppercase tracking-widest transition-all opacity-50">
+                            <span class="w-2 h-2 rounded-full bg-error"></span> <span id="spanSuspiciousCount">Xisoblanmoqda...</span>
+                        </span>
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row gap-4 items-center justify-between">
+                        <div class="text-xs text-secondary italic mb-2 md:mb-0">
+                            * Natijalar Sun'iy Intellekt ehtimolliklariga asoslangan
+                        </div>
+                        <a href="verification_dashboard.html"
+                            class="w-full md:w-auto bg-primary text-on-primary font-headline font-bold py-3 px-8 rounded-full flex items-center justify-center gap-2 hover:shadow-lg hover:opacity-90 transition-all">
+                            <span class="material-symbols-outlined text-sm">add_circle</span> Yangi tahlil boshlash
+                        </a>
+                    </div>
+
+                    <div class="mt-12">
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="font-headline font-bold text-sm text-tertiary">Tasdiqlangan Manbalar</span>
+                            <div class="h-px flex-grow bg-outline-variant opacity-15"></div>
+                        </div>
+                        <div id="verifiedSourcesContainer" class="space-y-4">
+                            <!-- Dynamic Sources Injected Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- Analysis Breakdown Sidebar -->
+<div class="lg:col-span-5 space-y-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/5">
+<h3 class="font-headline font-bold text-xl mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Linguistik tahlil
+                    </h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-secondary">Ob'ektivlik darajasi</span>
+<span id="objScore" class="text-sm font-bold text-tertiary">0%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div id="objBar" class="h-full bg-tertiary-container w-[0%] rounded-full transition-all duration-1000"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-secondary">Hissiy til ishlatilishi</span>
+<span id="emoScore" class="text-sm font-bold text-on-primary-container">Yuklanmoqda</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div id="emoBar" class="h-full bg-on-primary-container w-[0%] rounded-full transition-all duration-1000"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-medium text-secondary">Manbalar aniqligi</span>
+<span id="srcScore" class="text-sm font-bold text-tertiary">0%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div id="srcBar" class="h-full bg-tertiary-container w-[0%] rounded-full transition-all duration-1000"></div>
+</div>
+</div>
+</div>
+</div>
+            <div class="bg-tertiary p-8 rounded-xl text-white">
+                <h3 class="font-headline font-bold text-lg mb-4">Veracity Uz AI tahlili</h3>
+                <p class="text-sm text-on-tertiary-container leading-relaxed mb-6">
+                    Veracity Uz algoritmi matndagi lingvistik qoliplarni, hissiy ohangni va faktik muvofiqlikni tahlil qiladi. Biz Logistic Regression hamda TF-IDF texnologiyalari yordamida ma'lumotlarni o'zbek tilidagi minglab real va yolg'on xabarlar bilan solishtiramiz. Shuningdek, DuckDuckGo orqali real vaqt rejimida rasmiy manbalar tekshiriladi.
+                </p>
+                <a class="text-sm font-bold flex items-center gap-2 hover:underline" href="algorithm.html">
+                    Algoritm qanday ishlaydi? <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#f7fafc] dark:bg-slate-950 full-width border-t border-[#c4c6cf]/15 mt-auto">
+    <div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+        <div class="flex flex-col items-center md:items-start gap-2">
+            <span class="font-manrope font-bold text-[#002045] dark:text-blue-400 text-lg">VeracityUz</span>
+            <p class="font-inter text-xs text-[#545f72] dark:text-slate-400 max-w-xs text-center md:text-left">
+                © 2024 VeracityUz. O'zbekistonda dezinformatsiyaga qarshi kurashish va axborot savodxonligini oshirish loyihasi.
+            </p>
+        </div>
+        <div class="flex gap-8 font-inter text-xs text-[#545f72] dark:text-slate-400 mt-4 md:mt-0">
+            <a href="#" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Loyiha haqida</a>
+            <a href="#" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Foydalanish shartlari</a>
+            <a href="#" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Maxfiylik siyosati</a>
+            <a href="#" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Bog'lanish</a>
+        </div>
+    </div>
+</footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/results.js"></script>
+</body></html>

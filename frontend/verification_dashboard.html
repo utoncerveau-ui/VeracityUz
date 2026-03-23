@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#003765",
+              "on-primary-container": "#86a0cd",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed": "#001c38",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#002141",
+              "on-error-container": "#93000a",
+              "outline-variant": "#c4c6cf",
+              "primary-fixed": "#d6e3ff",
+              "surface-container-low": "#f1f4f6",
+              "surface-container-high": "#e5e9eb",
+              "on-background": "#181c1e",
+              "on-primary-fixed": "#001b3c",
+              "error": "#ba1a1a",
+              "primary-container": "#1a365d",
+              "on-secondary-container": "#586377",
+              "on-surface-variant": "#43474e",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "surface-bright": "#f7fafc",
+              "tertiary-fixed-dim": "#a2c9ff",
+              "secondary-fixed-dim": "#bcc7dd",
+              "outline": "#74777f",
+              "background": "#f7fafc",
+              "surface-variant": "#e0e3e5",
+              "inverse-on-surface": "#eef1f3",
+              "primary": "#002045",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#68a2e9",
+              "secondary-container": "#d5e0f7",
+              "on-tertiary-fixed-variant": "#004881",
+              "secondary": "#545f72",
+              "on-surface": "#181c1e",
+              "surface-dim": "#d7dadc",
+              "inverse-surface": "#2d3133",
+              "error-container": "#ffdad6",
+              "surface-tint": "#455f88",
+              "surface": "#f7fafc",
+              "on-secondary-fixed": "#111c2c",
+              "secondary-fixed": "#d8e3fa",
+              "surface-container": "#ebeef0",
+              "primary-fixed-dim": "#adc7f7",
+              "tertiary-fixed": "#d3e4ff",
+              "inverse-primary": "#adc7f7",
+              "on-primary-fixed-variant": "#2d476f",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#3c475a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-surface text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-[#f7fafc] dark:bg-slate-900 full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-8 h-16 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-[#002045] dark:text-blue-400 font-headline">VeracityUz</span>
+<div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
+<a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors" href="landing_page.html">Asosiy</a>
+<a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1" href="verification_dashboard.html">Tahlil</a>
+<a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors" href="algorithm.html">Algoritm</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-8 py-12">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold text-primary tracking-tight mb-3">Haqiqatni aniqlang</h1>
+<p class="text-secondary max-w-2xl leading-relaxed">Shubhali xabarlar, ijtimoiy tarmoqlardagi postlar yoki yangiliklar havolalarini tahlil qiling. Bizning AI tizimimiz ma'lumotlarning ishonchliligini tekshiradi.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Analysis Engine -->
+<div class="lg:col-span-8 space-y-8" data-aos="fade-up">
+<div class="bg-surface-container-low rounded-xl p-1">
+<div class="bg-surface-container-lowest rounded-lg p-8 shadow-sm">
+<!-- News Matnini Tahlil Qilish -->
+<div class="space-y-6">
+
+<div id="textInputContainer" class="space-y-2">
+<label class="text-xs font-bold text-secondary tracking-widest uppercase">Maqola matni</label>
+<textarea id="textInput" class="w-full bg-surface-container-high border-none rounded-md px-4 py-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all resize-none" placeholder="Shubhali xabar matnini bu yerga joylashtiring..." rows="10"></textarea>
+</div>
+<div class="flex justify-end pt-4">
+<button id="verifyBtn" class="bg-primary text-on-primary px-8 py-4 rounded-md font-bold flex items-center gap-3 hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                                    Haqiqiyligini tekshirish
+                                </button>
+</div>
+<div id="resultsContainer" class="mt-8 hidden">
+    <h3 class="text-xl font-bold mb-4">Natijalar</h3>
+    <div id="mlResult" class="p-4 rounded-md mb-4"></div>
+    <div id="verifyResult" class="p-4 rounded-md bg-surface-container-high"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Guidance / Tips Asymmetric section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+<div class="p-6 bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="policy">policy</span>
+<h3 class="font-bold text-primary mb-2">Qanday ishlaydi?</h3>
+<p class="text-xs text-secondary leading-relaxed">Bizning algoritmlarimiz matnni ma'lumotlar bazasi bilan solishtiradi va lingvistik markerlarni tahlil qiladi.</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="info">info</span>
+<h3 class="font-bold text-primary mb-2">Maxfiylik</h3>
+<p class="text-xs text-secondary leading-relaxed">Siz tomoningizdan taqdim etilgan barcha ma'lumotlar tahlil qilingandan so'ng xavfsiz tarzda anonimlashtiriladi.</p>
+</div>
+</div>
+</div>
+<!-- Recent Verifications Sidebar -->
+<aside class="lg:col-span-4 space-y-6" data-aos="fade-left" data-aos-delay="200">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-lg font-bold text-primary tracking-tight">So'ngi Tekshiruvlar</h2>
+<a class="text-xs font-bold text-primary-container hover:underline" href="#">Hammasini ko'rish</a>
+</div>
+<div class="space-y-4">
+<!-- Verification Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-tertiary-container shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="100">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-tertiary-container text-on-tertiary px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Real</span>
+<span class="text-[10px] text-secondary">2 min avval</span>
+</div>
+<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Markaziy bank yangi valyuta kurslarini e'lon qildi</h4>
+<div class="mt-3 flex items-center gap-2">
+<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[94%]"></div>
+</div>
+<span class="text-[10px] font-bold text-tertiary-container">94%</span>
+</div>
+</div>
+<!-- Verification Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-error shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="200">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-error text-on-error px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Fake</span>
+<span class="text-[10px] text-secondary">15 min avval</span>
+</div>
+<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Telegram orqali tarqalgan "bepul internet" haqidagi xabarlar</h4>
+<div class="mt-3 flex items-center gap-2">
+<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[12%]"></div>
+</div>
+<span class="text-[10px] font-bold text-error">12%</span>
+</div>
+</div>
+<!-- Verification Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-on-primary-container shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="300">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-on-primary-container text-primary px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Suspicious</span>
+<span class="text-[10px] text-secondary">42 min avval</span>
+</div>
+<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Yangi qonun loyihasi muhokamaga qo'yilgani aytilmoqda</h4>
+<div class="mt-3 flex items-center gap-2">
+<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-on-primary-container h-full w-[45%]"></div>
+</div>
+<span class="text-[10px] font-bold text-on-primary-container">45%</span>
+</div>
+</div>
+<!-- Verification Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-tertiary-container shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="400">
+<div class="flex justify-between items-start mb-2">
+<span class="bg-tertiary-container text-on-tertiary px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Real</span>
+<span class="text-[10px] text-secondary">1 soat avval</span>
+</div>
+<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Toshkentda xalqaro investitsiya forumi o'z ishini boshladi</h4>
+<div class="mt-3 flex items-center gap-2">
+<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[88%]"></div>
+</div>
+<span class="text-[10px] font-bold text-tertiary-container">88%</span>
+</div>
+</div>
+</div>
+<!-- Analytics Promo Card -->
+<div class="relative overflow-hidden bg-primary p-6 rounded-xl text-on-primary" data-aos="fade-up" data-aos-delay="500">
+<div class="relative z-10">
+<h3 class="font-bold text-lg mb-2">Professional tahlil</h3>
+<p class="text-xs opacity-80 mb-4">Chuqur tahlil va manbalarni tekshirish uchun biznes akkauntga o'ting.</p>
+<button class="w-full py-2 bg-on-tertiary-container text-primary text-xs font-bold rounded hover:bg-white transition-colors">Upgrade Now</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="query_stats">query_stats</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f7fafc] dark:bg-slate-950 full-width border-t border-[#c4c6cf]/15 mt-auto" data-aos="fade-in">
+<div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="font-manrope font-bold text-[#002045] dark:text-blue-400 text-lg">VeracityUz</div>
+<p class="font-inter text-xs text-[#545f72] dark:text-slate-400 max-w-xs text-center md:text-left">© 2024 VeracityUz. O'zbekistonda axborot xavfsizligi va haqiqatni himoya qilish markazi.</p>
+</div>
+<div class="flex gap-8 font-inter text-xs text-[#545f72] dark:text-slate-400 mt-4 md:mt-0">
+<a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Missiyamiz</a>
+<a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Foydalanish shartlari</a>
+<a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Maxfiylik siyosati</a>
+<a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')" class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Bog'lanish</a>
+</div>
+</div>
+</footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/animations.js?v=2"></script>
+<script src="js/interactions.js?v=2"></script>
+<script src="js/api.js?v=3"></script>
+</body></html>
