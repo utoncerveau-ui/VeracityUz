@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<html class="light" lang="uz"><head>
+<html lang="uz"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="js/theme.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -74,135 +75,173 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="bg-surface text-on-background min-h-screen flex flex-col">
+<body class="bg-surface dark:bg-slate-950 text-on-background dark:text-white min-h-screen flex flex-col transition-colors">
 <!-- TopNavBar -->
-<nav class="bg-[#f7fafc] dark:bg-slate-900 full-width top-0 sticky z-50">
+<nav class="bg-[#f7fafc] dark:bg-slate-900 full-width top-0 sticky z-50 transition-colors">
 <div class="flex justify-between items-center w-full px-8 h-16 max-w-7xl mx-auto">
 <div class="flex items-center gap-8">
 <span class="text-2xl font-bold tracking-tighter text-[#002045] dark:text-blue-400 font-headline">VeracityUz</span>
-<div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
-<a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors" href="landing_page.html">Asosiy</a>
-<a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1" href="verification_dashboard.html">Tahlil</a>
-<a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors" href="algorithm.html">Algoritm</a>
-</div>
-</div>
-</div>
-</nav>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
+                        <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors" href="landing_page.html">Asosiy</a>
+                        <a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1" href="verification_dashboard.html">Tahlil</a>
+                        <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors" href="algorithm.html">Algoritm</a>
+                    </div>
+                    <button class="theme-toggle p-2 rounded-full hover:bg-outline-variant/10 text-secondary transition-all" title="Mavzuni o'zgartirish">
+                        <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                        <span class="material-symbols-outlined hidden dark:block text-blue-400">light_mode</span>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3 ml-4">
+                    <div id="scriptToggle" class="flex bg-surface-container-high dark:bg-slate-800 rounded-full p-1 border border-outline-variant/10 cursor-pointer select-none">
+                        <div id="latinOpt" class="px-3 py-1 text-[10px] font-black rounded-full bg-primary text-white transition-all">LAT</div>
+                        <div id="cyrillOpt" class="px-3 py-1 text-[10px] font-black rounded-full text-secondary dark:text-slate-500 transition-all">КИР</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 <!-- Main Content -->
 <main class="flex-grow max-w-7xl mx-auto w-full px-8 py-12">
 <!-- Header Section -->
 <header class="mb-12">
-<h1 class="text-4xl font-extrabold text-primary tracking-tight mb-3">Haqiqatni aniqlang</h1>
-<p class="text-secondary max-w-2xl leading-relaxed">Shubhali xabarlar, ijtimoiy tarmoqlardagi postlar yoki yangiliklar havolalarini tahlil qiling. Bizning AI tizimimiz ma'lumotlarning ishonchliligini tekshiradi.</p>
+<h1 class="text-4xl font-extrabold text-primary dark:text-white tracking-tight mb-3 transition-colors">Haqiqatni aniqlang</h1>
+<p class="text-secondary dark:text-slate-400 max-w-2xl leading-relaxed transition-colors">Shubhali xabarlar, ijtimoiy tarmoqlardagi postlar yoki yangiliklar havolalarini tahlil qiling. Bizning AI tizimimiz ma'lumotlarning ishonchliligini tekshiradi.</p>
 </header>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 <!-- Analysis Engine -->
 <div class="lg:col-span-8 space-y-8" data-aos="fade-up">
-<div class="bg-surface-container-low rounded-xl p-1">
-<div class="bg-surface-container-lowest rounded-lg p-8 shadow-sm">
+<div class="bg-surface-container-low dark:bg-slate-800 rounded-xl p-1 transition-colors">
+<div class="bg-surface-container-lowest dark:bg-slate-900 rounded-lg p-8 shadow-sm transition-colors">
+<!-- Tab Switcher (Phase 4 Restoration) -->
+<div class="flex gap-4 mb-8 border-b border-outline-variant/15 dark:border-slate-800 pb-2">
+    <button id="tabText" class="px-4 py-2 text-sm font-bold text-primary dark:text-white border-b-2 border-primary dark:border-blue-400 transition-all">Matn tahlili</button>
+    <button id="tabLink" class="px-4 py-2 text-sm font-bold text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-all">Havola orqali</button>
+</div>
+
 <!-- News Matnini Tahlil Qilish -->
 <div class="space-y-6">
-
 <div id="textInputContainer" class="space-y-2">
-<label class="text-xs font-bold text-secondary tracking-widest uppercase">Maqola matni</label>
-<textarea id="textInput" class="w-full bg-surface-container-high border-none rounded-md px-4 py-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all resize-none" placeholder="Shubhali xabar matnini bu yerga joylashtiring..." rows="10"></textarea>
+<label class="text-xs font-bold text-secondary dark:text-slate-500 tracking-widest uppercase">Maqola matni</label>
+<textarea id="textInput" class="w-full bg-surface-container-high dark:bg-slate-800 border-none rounded-md px-4 py-4 focus:ring-2 focus:ring-primary dark:focus:ring-blue-500 dark:text-white focus:bg-surface-container-lowest dark:focus:bg-slate-900 transition-all resize-none" placeholder="Shubhali xabar matnini bu yerga joylashtiring..." rows="10"></textarea>
 </div>
+
+<div id="urlInputContainer" class="space-y-2 hidden">
+<label class="text-xs font-bold text-secondary dark:text-slate-500 tracking-widest uppercase">Maqola havolasi (URL)</label>
+<input type="text" id="urlInput" class="w-full bg-surface-container-high dark:bg-slate-800 border-none rounded-md px-4 py-4 focus:ring-2 focus:ring-primary dark:focus:ring-blue-500 dark:text-white focus:bg-surface-container-lowest dark:focus:bg-slate-900 transition-all" placeholder="https://t.me/news/123 yoki yangilik sayti havolasi...">
+</div>
+
 <div class="flex justify-end pt-4">
-<button id="verifyBtn" class="bg-primary text-on-primary px-8 py-4 rounded-md font-bold flex items-center gap-3 hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/10">
+<button id="verifyBtn" class="bg-primary dark:bg-blue-600 text-on-primary dark:text-white px-8 py-4 rounded-md font-bold flex items-center gap-3 hover:opacity-90 active:scale-[0.98] transition-all shadow-lg shadow-primary/10">
 <span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
                                     Haqiqiyligini tekshirish
                                 </button>
 </div>
 <div id="resultsContainer" class="mt-8 hidden">
-    <h3 class="text-xl font-bold mb-4">Natijalar</h3>
-    <div id="mlResult" class="p-4 rounded-md mb-4"></div>
-    <div id="verifyResult" class="p-4 rounded-md bg-surface-container-high"></div>
+    <!-- Progress Stepper -->
+    <div id="progressStepper" class="mb-8 p-6 bg-surface-container-low dark:bg-slate-800 rounded-xl border border-outline-variant/10">
+        <h4 class="text-xs font-black text-secondary dark:text-slate-500 uppercase tracking-widest mb-6">Tahlil Jarayoni</h4>
+        <div class="space-y-4">
+            <div id="step1" class="flex items-center gap-4 opacity-30 transition-all duration-500">
+                <div class="step-icon w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-900/30 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm text-primary dark:text-blue-400">text_snippet</span>
+                </div>
+                <span class="text-sm font-bold text-secondary dark:text-slate-300">Linguistik tahlil...</span>
+            </div>
+            <div id="step2" class="flex items-center gap-4 opacity-30 transition-all duration-500">
+                <div class="step-icon w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-900/30 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm text-primary dark:text-blue-400">database</span>
+                </div>
+                <span class="text-sm font-bold text-secondary dark:text-slate-300">Bilimlar bazasi qidiruvi...</span>
+            </div>
+            <div id="step3" class="flex items-center gap-4 opacity-30 transition-all duration-500">
+                <div class="step-icon w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-900/30 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm text-primary dark:text-blue-400">rss_feed</span>
+                </div>
+                <span class="text-sm font-bold text-secondary dark:text-slate-300">Rasmiy yangiliklar (RSS) tahlili...</span>
+            </div>
+            <div id="step4" class="flex items-center gap-4 opacity-30 transition-all duration-500">
+                <div class="step-icon w-8 h-8 rounded-full bg-primary/10 dark:bg-blue-900/30 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm text-primary dark:text-blue-400">psychology</span>
+                </div>
+                <span class="text-sm font-bold text-secondary dark:text-slate-300">AI ekspert xulosasi tayyorlanmoqda...</span>
+            </div>
+        </div>
+    </div>
+    <div id="mlResult" class="p-4 rounded-md mb-4 dark:bg-slate-800"></div>
+    <div id="verifyResult" class="p-4 rounded-md bg-surface-container-high dark:bg-slate-800"></div>
 </div>
 </div>
 </div>
 </div>
 <!-- Guidance / Tips Asymmetric section -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-<div class="p-6 bg-secondary-container/30 rounded-lg">
-<span class="material-symbols-outlined text-primary mb-3" data-icon="policy">policy</span>
-<h3 class="font-bold text-primary mb-2">Qanday ishlaydi?</h3>
-<p class="text-xs text-secondary leading-relaxed">Bizning algoritmlarimiz matnni ma'lumotlar bazasi bilan solishtiradi va lingvistik markerlarni tahlil qiladi.</p>
+<div class="p-6 bg-secondary-container/30 dark:bg-blue-900/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-blue-400 mb-3" data-icon="policy">policy</span>
+<h3 class="font-bold text-primary dark:text-blue-300 mb-2">Qanday ishlaydi?</h3>
+<p class="text-xs text-secondary dark:text-slate-400 leading-relaxed">Bizning algoritmlarimiz matnni ma'lumotlar bazasi bilan solishtiradi va lingvistik markerlarni tahlil qiladi.</p>
 </div>
-<div class="p-6 bg-surface-container-low rounded-lg">
-<span class="material-symbols-outlined text-primary mb-3" data-icon="info">info</span>
-<h3 class="font-bold text-primary mb-2">Maxfiylik</h3>
-<p class="text-xs text-secondary leading-relaxed">Siz tomoningizdan taqdim etilgan barcha ma'lumotlar tahlil qilingandan so'ng xavfsiz tarzda anonimlashtiriladi.</p>
+<div class="p-6 bg-surface-container-low dark:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary dark:text-blue-400 mb-3" data-icon="info">info</span>
+<h3 class="font-bold text-primary dark:text-blue-300 mb-2">Maxfiylik</h3>
+<p class="text-xs text-secondary dark:text-slate-400 leading-relaxed">Siz tomoningizdan taqdim etilgan barcha ma'lumotlar tahlil qilingandan so'ng xavfsiz tarzda anonimlashtiriladi.</p>
 </div>
 </div>
 </div>
 <!-- Recent Verifications Sidebar -->
 <aside class="lg:col-span-4 space-y-6" data-aos="fade-left" data-aos-delay="200">
 <div class="flex items-center justify-between mb-2">
-<h2 class="text-lg font-bold text-primary tracking-tight">So'ngi Tekshiruvlar</h2>
-<a class="text-xs font-bold text-primary-container hover:underline" href="#">Hammasini ko'rish</a>
+<h2 class="text-lg font-bold text-primary dark:text-white tracking-tight transition-colors">So'ngi Tekshiruvlar</h2>
+<a class="text-xs font-bold text-primary-container dark:text-blue-400 hover:underline" href="#">Hammasini ko'rish</a>
 </div>
 <div class="space-y-4">
 <!-- Verification Card 1 -->
-<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-tertiary-container shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="100">
+<div class="bg-surface-container-lowest dark:bg-slate-900 p-5 rounded-lg border-l-4 border-tertiary-container dark:border-blue-500 shadow-sm hover:translate-x-1 transition-all" data-aos="fade-left" data-aos-delay="100">
 <div class="flex justify-between items-start mb-2">
-<span class="bg-tertiary-container text-on-tertiary px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Real</span>
-<span class="text-[10px] text-secondary">2 min avval</span>
+<span class="bg-tertiary-container dark:bg-blue-900 text-on-tertiary dark:text-blue-200 px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase transition-colors">Real</span>
+<span class="text-[10px] text-secondary dark:text-slate-500">2 min avval</span>
 </div>
-<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Markaziy bank yangi valyuta kurslarini e'lon qildi</h4>
+<h4 class="text-sm font-semibold text-primary dark:text-slate-200 leading-snug line-clamp-2 transition-colors">Markaziy bank yangi valyuta kurslarini e'lon qildi</h4>
 <div class="mt-3 flex items-center gap-2">
-<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
-<div class="bg-tertiary-container h-full w-[94%]"></div>
+<div class="flex-grow bg-surface-container-highest dark:bg-slate-800 h-1 rounded-full overflow-hidden transition-colors">
+<div class="bg-tertiary-container dark:bg-blue-500 h-full w-[94%]"></div>
 </div>
-<span class="text-[10px] font-bold text-tertiary-container">94%</span>
+<span class="text-[10px] font-bold text-tertiary-container dark:text-blue-400">94%</span>
 </div>
 </div>
 <!-- Verification Card 2 -->
-<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-error shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="200">
+<div class="bg-surface-container-lowest dark:bg-slate-900 p-5 rounded-lg border-l-4 border-error shadow-sm hover:translate-x-1 transition-all" data-aos="fade-left" data-aos-delay="200">
 <div class="flex justify-between items-start mb-2">
-<span class="bg-error text-on-error px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Fake</span>
-<span class="text-[10px] text-secondary">15 min avval</span>
+<span class="bg-error text-on-error px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase transition-colors">Fake</span>
+<span class="text-[10px] text-secondary dark:text-slate-500">15 min avval</span>
 </div>
-<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Telegram orqali tarqalgan "bepul internet" haqidagi xabarlar</h4>
+<h4 class="text-sm font-semibold text-primary dark:text-slate-200 leading-snug line-clamp-2 transition-colors">Telegram orqali tarqalgan "beppul internet" haqidagi xabarlar</h4>
 <div class="mt-3 flex items-center gap-2">
-<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="flex-grow bg-surface-container-highest dark:bg-slate-800 h-1 rounded-full overflow-hidden transition-colors">
 <div class="bg-error h-full w-[12%]"></div>
 </div>
 <span class="text-[10px] font-bold text-error">12%</span>
 </div>
 </div>
 <!-- Verification Card 3 -->
-<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-on-primary-container shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="300">
+<div class="bg-surface-container-lowest dark:bg-slate-900 p-5 rounded-lg border-l-4 border-on-primary-container dark:border-slate-500 shadow-sm hover:translate-x-1 transition-all" data-aos="fade-left" data-aos-delay="300">
 <div class="flex justify-between items-start mb-2">
-<span class="bg-on-primary-container text-primary px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Suspicious</span>
-<span class="text-[10px] text-secondary">42 min avval</span>
+<span class="bg-on-primary-container dark:bg-slate-700 text-primary dark:text-slate-300 px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase transition-colors">Suspicious</span>
+<span class="text-[10px] text-secondary dark:text-slate-500">42 min avval</span>
 </div>
-<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Yangi qonun loyihasi muhokamaga qo'yilgani aytilmoqda</h4>
+<h4 class="text-sm font-semibold text-primary dark:text-slate-200 leading-snug line-clamp-2 transition-colors">Yangi qonun loyihasi muhokamaga qo'yilgani aytilmoqda</h4>
 <div class="mt-3 flex items-center gap-2">
-<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
-<div class="bg-on-primary-container h-full w-[45%]"></div>
+<div class="flex-grow bg-surface-container-highest dark:bg-slate-800 h-1 rounded-full overflow-hidden transition-colors">
+<div class="bg-on-primary-container dark:bg-slate-500 h-full w-[45%]"></div>
 </div>
-<span class="text-[10px] font-bold text-on-primary-container">45%</span>
-</div>
-</div>
-<!-- Verification Card 4 -->
-<div class="bg-surface-container-lowest p-5 rounded-lg border-l-4 border-tertiary-container shadow-sm hover:translate-x-1 transition-transform" data-aos="fade-left" data-aos-delay="400">
-<div class="flex justify-between items-start mb-2">
-<span class="bg-tertiary-container text-on-tertiary px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-wider uppercase">Real</span>
-<span class="text-[10px] text-secondary">1 soat avval</span>
-</div>
-<h4 class="text-sm font-semibold text-primary leading-snug line-clamp-2">Toshkentda xalqaro investitsiya forumi o'z ishini boshladi</h4>
-<div class="mt-3 flex items-center gap-2">
-<div class="flex-grow bg-surface-container-highest h-1 rounded-full overflow-hidden">
-<div class="bg-tertiary-container h-full w-[88%]"></div>
-</div>
-<span class="text-[10px] font-bold text-tertiary-container">88%</span>
+<span class="text-[10px] font-bold text-on-primary-container dark:text-slate-400">45%</span>
 </div>
 </div>
 </div>
 <!-- Analytics Promo Card -->
 <div class="relative overflow-hidden bg-primary p-6 rounded-xl text-on-primary" data-aos="fade-up" data-aos-delay="500">
 <div class="relative z-10">
-<h3 class="font-bold text-lg mb-2">Professional tahlil</h3>
+<h3 class="font-bold text-lg mb-2">Tahlil vositalari</h3>
 <p class="text-xs opacity-80 mb-4">Chuqur tahlil va manbalarni tekshirish uchun biznes akkauntga o'ting.</p>
 <button class="w-full py-2 bg-on-tertiary-container text-primary text-xs font-bold rounded hover:bg-white transition-colors">Upgrade Now</button>
 </div>
@@ -232,4 +271,5 @@
 <script src="js/animations.js?v=2"></script>
 <script src="js/interactions.js?v=2"></script>
 <script src="js/api.js?v=3"></script>
+<script src="js/script_toggle.js"></script>
 </body></html>

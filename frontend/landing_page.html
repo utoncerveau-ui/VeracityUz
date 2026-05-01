@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 
-<html class="light" lang="uz">
+<html lang="uz">
 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="js/theme.js"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
     rel="stylesheet" />
@@ -83,27 +84,39 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-surface text-on-surface font-body">
+<body class="bg-surface dark:bg-slate-950 text-on-surface dark:text-white font-body transition-colors">
   <!-- TopNavBar -->
-  <nav class="bg-[#f7fafc] dark:bg-slate-900 sticky top-0 z-50 w-full">
+  <nav class="bg-[#f7fafc] dark:bg-slate-900 sticky top-0 z-50 w-full transition-colors">
     <div class="flex justify-between items-center w-full px-8 h-16 max-w-7xl mx-auto">
       <div class="flex items-center gap-8">
         <div class="text-2xl font-bold tracking-tighter text-[#002045] dark:text-blue-400 font-headline">
           VeracityUz
         </div>
-        <div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
-          <a class="text-[#002045] dark:text-blue-400 border-b-2 border-[#002045] dark:border-blue-400 pb-1"
-            href="landing_page.html">
-            Asosiy
-          </a>
-          <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors"
-            href="verification_dashboard.html">
-            Tahlil
-          </a>
-          <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors"
-            href="algorithm.html">
-            Algoritm
-          </a>
+        <div class="flex items-center gap-4">
+          <div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
+            <a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1"
+              href="landing_page.html">
+              Asosiy
+            </a>
+            <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors"
+              href="verification_dashboard.html">
+              Tahlil
+            </a>
+            <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors"
+              href="algorithm.html">
+              Algoritm
+            </a>
+          </div>
+          <button class="theme-toggle p-2 rounded-full hover:bg-outline-variant/10 text-secondary transition-all" title="Mavzuni o'zgartirish">
+            <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+            <span class="material-symbols-outlined hidden dark:block text-blue-400">light_mode</span>
+          </button>
+        </div>
+        <div class="flex items-center gap-3 ml-4">
+            <div id="scriptToggle" class="flex bg-surface-container-high dark:bg-slate-800 rounded-full p-1 border border-outline-variant/10 cursor-pointer select-none">
+                <div id="latinOpt" class="px-3 py-1 text-[10px] font-black rounded-full bg-primary text-white transition-all">LAT</div>
+                <div id="cyrillOpt" class="px-3 py-1 text-[10px] font-black rounded-full text-secondary dark:text-slate-500 transition-all">КИР</div>
+            </div>
         </div>
       </div>
     </div>
@@ -327,22 +340,85 @@
       </div>
     </section>
   </main>
-  <!-- Footer -->
-  <footer class="bg-[#f7fafc] dark:bg-slate-950 border-t border-[#c4c6cf]/15" data-aos="fade-in">
-    <div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
-      <div class="flex flex-col items-center md:items-start">
-        <div class="font-manrope font-bold text-[#002045] dark:text-blue-400 text-lg mb-2">VeracityUz</div>
-        <p class="font-inter text-xs text-[#545f72] dark:text-slate-400 text-center md:text-left">© 2024 VeracityUz.
-          O'zbekistonda axborot xavfsizligi va haqiqatni himoya qilish markazi.</p>
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-8 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-16" data-aos="fade-up">
+    <div class="lg:w-1/2 space-y-8">
+      <h1 class="text-6xl font-black text-[#002045] dark:text-white leading-[1.1] tracking-tighter transition-colors">
+        Axborot <span class="text-primary dark:text-blue-400">haqiqiyligini</span> <br />
+        ishonch bilan tekshiring
+      </h1>
+      <p class="text-lg text-secondary dark:text-slate-400 max-w-xl leading-relaxed transition-colors">
+        Dezinformatsiya davrida biz sizning ishonchli qalqoningiz bo'lamiz.
+        Sun'iy intellekt yordamida har qanday xabarning manbasini va lingvistik markerlarini tahlil qilamiz.
+      </p>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a class="bg-[#002045] dark:bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-xl shadow-blue-900/10 hover:translate-y-[-2px] hover:shadow-2xl transition-all"
+          href="verification_dashboard.html">
+          Tahlilni boshlash
+        </a>
+        <a class="px-8 py-4 rounded-full font-bold text-[#002045] dark:text-blue-400 border border-outline-variant dark:border-slate-700 hover:bg-surface-container transition-colors"
+          href="#features">
+          Batafsil ma'lumot
+        </a>
       </div>
-      <div class="flex gap-8 font-inter text-xs text-[#545f72] dark:text-slate-400">
-        <a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')"
-          class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Missiyamiz</a>
-        <a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')"
-          class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Foydalanish shartlari</a>
-        <a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')"
-          class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Maxfiylik siyosati</a>
-        <a href="#" onclick="alert('Ushbu sahifa ustida ish olib borilmoqda. Tez kunda tayyor bo\'ladi!')"
+    </div>
+    <div class="lg:w-1/2 relative">
+      <div class="bg-primary dark:bg-blue-900/20 absolute inset-0 blur-[100px] opacity-10 rounded-full"></div>
+      <div class="relative bg-white dark:bg-slate-900 p-2 rounded-2xl shadow-2xl transition-colors">
+        <img class="rounded-xl w-full"
+          src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070"
+          alt="Security Visualization" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="max-w-7xl mx-auto px-8 py-24 border-t border-outline-variant/10 dark:border-slate-800 transition-colors" id="features">
+    <div class="text-center mb-16 space-y-4">
+      <h2 class="text-3xl font-black text-[#002045] dark:text-white transition-colors">Bizning Imkoniyatlarimiz</h2>
+      <p class="text-secondary dark:text-slate-400 transition-colors">Eng zamonaviy texnologiyalar yordamida haqiqatni himoya qilamiz</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="p-8 bg-surface-container-low dark:bg-slate-900 rounded-2xl border border-outline-variant/5 dark:border-slate-800 hover:border-primary/20 transition-all group" data-aos="fade-up">
+        <span class="material-symbols-outlined text-4xl text-primary dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform">verified_user</span>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">AI-Tekshiruv</h3>
+        <p class="text-sm text-secondary dark:text-slate-400 leading-relaxed transition-colors">Xabarlardagi manipulyatsiya va yolg'on lingvistik markerlarni avtomatlashtirilgan holda aniqlash.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="p-8 bg-surface-container-low dark:bg-slate-900 rounded-2xl border border-outline-variant/5 dark:border-slate-800 hover:border-primary/20 transition-all group" data-aos="fade-up" data-aos-delay="100">
+        <span class="material-symbols-outlined text-4xl text-primary dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform">source</span>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">Manba Tahlili</h3>
+        <p class="text-sm text-secondary dark:text-slate-400 leading-relaxed transition-colors">Xabarning asl manbasini va uning ishonchlilik reytingini tekshirish tizimi.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="p-8 bg-surface-container-low dark:bg-slate-900 rounded-2xl border border-outline-variant/5 dark:border-slate-800 hover:border-primary/20 transition-all group" data-aos="fade-up" data-aos-delay="200">
+        <span class="material-symbols-outlined text-4xl text-primary dark:text-blue-400 mb-6 group-hover:scale-110 transition-transform">insights</span>
+        <h3 class="text-xl font-bold mb-3 dark:text-white">Statistika</h3>
+        <p class="text-sm text-secondary dark:text-slate-400 leading-relaxed transition-colors">Har bir xabar bo'yicha batafsil lingvistik va kontekstual tahlil natijalari.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="max-w-7xl mx-auto px-8 py-20" data-aos="zoom-in">
+    <div class="bg-primary dark:bg-blue-900 p-12 md:p-20 rounded-[40px] text-center text-white relative overflow-hidden transition-colors">
+      <div class="relative z-10 space-y-8">
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight transition-colors">Haqiqat tomonida bo'ling</h2>
+        <p class="text-white/70 max-w-2xl mx-auto text-lg transition-colors">Bugun o'z xabaringizni birinchi bo'lib tekshiring va jamoat ishonchini tahlil qiling.</p>
+        <button class="bg-white text-primary dark:text-blue-900 px-10 py-5 rounded-full font-bold hover:scale-105 transition-transform">Hozir boshlang</button>
+      </div>
+      <!-- Background Graphic -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <span class="material-symbols-outlined text-[400px] absolute -right-20 -bottom-20">shield_with_heart</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
           class="hover:text-[#002045] dark:hover:text-blue-300 transition-colors">Bog'lanish</a>
       </div>
     </div>

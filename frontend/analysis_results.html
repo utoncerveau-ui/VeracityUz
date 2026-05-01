@@ -4,9 +4,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="js/theme.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -74,9 +75,9 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="bg-mesh font-body text-on-background min-h-screen flex flex-col">
+<body class="bg-surface dark:bg-slate-950 text-on-background dark:text-white min-h-screen flex flex-col transition-colors">
 <!-- TopNavBar -->
-<nav class="bg-[#f7fafc] dark:bg-slate-900 full-width top-0 sticky z-50">
+<nav class="bg-[#f7fafc] dark:bg-slate-900 full-width top-0 sticky z-50 transition-colors">
 <div class="flex justify-between items-center w-full px-8 h-16 max-w-7xl mx-auto">
 <div class="flex items-center gap-8">
 <span class="text-2xl font-bold tracking-tighter text-[#002045] dark:text-blue-400 font-headline">VeracityUz</span>
@@ -85,76 +86,73 @@
                     <a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1" href="verification_dashboard.html">Tahlil</a>
                     <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors" href="algorithm.html">Algoritm</a>
                 </div>
+                <div class="flex items-center gap-3 ml-4">
+                    <div id="scriptToggle" class="flex bg-surface-container-high dark:bg-slate-800 rounded-full p-1 border border-outline-variant/10 cursor-pointer select-none">
+                        <div id="latinOpt" class="px-3 py-1 text-[10px] font-black rounded-full bg-primary text-white transition-all">LAT</div>
+                        <div id="cyrillOpt" class="px-3 py-1 text-[10px] font-black rounded-full text-secondary dark:text-slate-500 transition-all">КИР</div>
+                    </div>
+                </div>
 </div>
 </div>
 </nav>
 <main class="flex-grow max-w-7xl mx-auto w-full px-8 py-12">
 <!-- Verdict Hero Section -->
 <section class="mb-12">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-<!-- Main Verdict Card -->
-<div class="lg:col-span-8 bg-surface-container-lowest p-10 rounded-xl relative overflow-hidden flex flex-col justify-center">
-<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary-container/5 rounded-bl-full"></div>
-<div class="flex flex-col md:flex-row md:items-end gap-6">
-<div>
-<span class="font-label text-xs tracking-widest uppercase text-secondary mb-2 block">Xulosa</span>
-<h1 id="resultVerdict" class="font-headline text-5xl font-extrabold tracking-tight">Yuklanmoqda...</h1>
-<p id="resultSubtitle" class="text-secondary mt-4 max-w-md">Tahlil natijalari olinmoqda, iltimos kuting...</p>
+<!-- Verdict Card -->
+            <div class="bg-surface-container-lowest dark:bg-slate-900 p-8 md:p-12 rounded-2xl shadow-sm border border-outline-variant/5 dark:border-slate-800 mb-12 relative overflow-hidden transition-colors" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row items-center gap-12 relative z-10">
+                    <!-- Confidence Gauge -->
+                    <div class="relative w-40 h-40 flex items-center justify-center">
+                        <div id="confidenceGauge" class="absolute inset-0 rounded-full" style="background: conic-gradient(#1a365d 0%, #e5e9eb 0%); mask: radial-gradient(transparent 58%, black 60%); -webkit-mask: radial-gradient(transparent 58%, black 60%);"></div>
+                        <div class="text-center z-10">
+                            <span id="resultConfidence" class="block font-headline text-4xl font-black text-primary dark:text-white transition-colors">0%</span>
+                            <span class="text-[10px] uppercase tracking-tighter text-secondary dark:text-slate-500 font-bold transition-colors">Ishonch</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-grow text-center md:text-left">
+                        <h1 id="resultVerdict" class="font-headline text-5xl font-extrabold text-primary dark:text-blue-400 tracking-tight mb-4 transition-colors">Tahlil qilinmoqda...</h1>
+                        <p id="resultSubtitle" class="text-secondary dark:text-slate-400 text-lg leading-relaxed max-w-2xl transition-colors">Iltimos, kuting. Sun'iy intellekt va rasmiy manbalar ma'lumotlarni solishtirmoqda.</p>
+                        
+                        <!-- Feedback Buttons -->
+                        <div id="feedbackContainer" class="mt-8 flex gap-3 justify-center md:justify-start hidden">
+                            <span class="text-xs font-bold text-secondary dark:text-slate-500 self-center mr-2 transition-colors">Natija to'g'rimi?</span>
+                            <button onclick="sendFeedback(true)" class="flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant/20 dark:border-slate-700 hover:bg-secondary-container dark:hover:bg-blue-900/30 transition-all text-xs font-bold dark:text-slate-300">
+                                <span class="material-symbols-outlined text-sm text-primary dark:text-blue-400">thumb_up</span> Ha
+                            </button>
+                            <button onclick="sendFeedback(false)" class="flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant/20 dark:border-slate-700 hover:bg-error-container/20 transition-all text-xs font-bold dark:text-slate-300">
+                                <span class="material-symbols-outlined text-sm text-error">thumb_down</span> Yo'q
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Back Button -->
+<div class="mb-8" data-aos="fade-right">
+<a class="inline-flex items-center gap-2 text-sm font-bold text-secondary dark:text-slate-400 hover:text-primary dark:hover:text-white transition-all" href="verification_dashboard.html">
+<span class="material-symbols-outlined">arrow_back</span>
+                Orqaga qaytish
+            </a>
 </div>
-<div class="flex flex-col items-center md:items-end ml-auto">
-<div class="relative w-32 h-32 flex items-center justify-center">
-<svg class="w-full h-full transform -rotate-90">
-<circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
-<circle class="text-tertiary-container" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="29.15" stroke-width="8"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span id="resultConfidence" class="font-headline text-2xl font-bold text-tertiary">--%</span>
-<span class="text-[10px] text-secondary font-medium uppercase tracking-tighter">Ishonch</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Action Sidebar -->
-<div class="lg:col-span-4 flex flex-col gap-4">
-<div class="bg-surface-container-low p-8 rounded-xl flex-grow flex flex-col justify-between">
-<div>
-<h3 class="font-headline font-bold text-lg mb-2">Natijani ulashish</h3>
-<p class="text-xs text-secondary leading-relaxed">Ushbu tahlil natijasini ijtimoiy tarmoqlarda ulashing va dezinformatsiyaga qarshi kurashga hissa qo'shing.</p>
-</div>
-                    <div class="flex flex-col gap-3 mt-6">
-                        <button class="bg-primary text-on-primary font-headline font-semibold py-3 px-6 rounded-md flex items-center justify-center gap-2 hover:opacity-90 transition-all">
-                            <span class="material-symbols-outlined text-sm">share</span> Natijani ulashish
-                        </button>
-<button class="bg-surface-container-highest text-secondary font-headline font-semibold py-3 px-6 rounded-md flex items-center justify-center gap-2 hover:bg-surface-container-high transition-all">
-<span class="material-symbols-outlined text-sm">flag</span> Xatoni xabar qilish
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 <!-- Article Text Content -->
 <div class="lg:col-span-7">
-<div class="flex items-center gap-4 mb-8">
-<div class="h-px flex-grow bg-outline-variant opacity-15"></div>
-<span class="font-headline font-bold text-sm text-tertiary">Asl matn tahlili</span>
-<div class="h-px flex-grow bg-outline-variant opacity-15"></div>
+<div class="flex items-center justify-between mb-8">
+    <div class="h-px flex-grow bg-outline-variant dark:bg-slate-800 opacity-15 transition-colors"></div>
+    <div class="flex items-center gap-4">
+        <span class="font-headline font-bold text-sm text-tertiary dark:text-slate-400 px-4 transition-colors">Asl matn tahlili</span>
+        <button id="btnCopyReport" class="flex items-center gap-2 px-4 py-1.5 bg-surface-container-high dark:bg-slate-800 hover:bg-outline-variant/20 text-tertiary dark:text-slate-300 rounded-full text-xs font-bold transition-all border border-outline-variant/10 dark:border-slate-700">
+            <span class="material-symbols-outlined text-sm" id="copyIcon">content_copy</span>
+            <span id="copyText">Natijani nusxalash</span>
+        </button>
+    </div>
 </div>
-<div class="bg-surface-container-lowest p-8 md:p-12 rounded-xl leading-relaxed text-on-background font-body text-md shadow-sm border border-outline-variant/5">
-<h2 class="font-headline text-2xl font-bold mb-6">Tahlil qilingan matn</h2>
-<div id="resultArticleBody" class="mb-4 text-justify whitespace-pre-wrap">
-<!-- Dynamic Text Injected Here -->
+
+<!-- Article Body -->
+<div id="resultArticleBody" class="bg-surface-container-lowest dark:bg-slate-900 p-8 rounded-xl mb-8 leading-relaxed text-on-background dark:text-slate-300">
+    <!-- Dynamic content will be injected here -->
 </div>
-<div class="mt-12 flex gap-4">
-                        <span id="chipConfirmed" class="flex items-center gap-1.5 text-[10px] font-bold text-on-primary-container bg-surface-container-high px-3 py-1 rounded-full uppercase tracking-widest transition-all opacity-50">
-                            <span class="w-2 h-2 rounded-full bg-primary"></span> <span id="spanConfirmedCount">Tayyorlanmoqda...</span>
-                        </span>
-                        <span id="chipSuspicious" class="flex items-center gap-1.5 text-[10px] font-bold text-error bg-error-container/30 px-3 py-1 rounded-full uppercase tracking-widest transition-all opacity-50">
-                            <span class="w-2 h-2 rounded-full bg-error"></span> <span id="spanSuspiciousCount">Xisoblanmoqda...</span>
-                        </span>
-                    </div>
 
                     <div class="mt-12 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row gap-4 items-center justify-between">
                         <div class="text-xs text-secondary italic mb-2 md:mb-0">
@@ -176,42 +174,31 @@
                         </div>
                     </div>
                 </div>
-            </div>
 <!-- Analysis Breakdown Sidebar -->
 <div class="lg:col-span-5 space-y-8">
-<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/5">
+<div class="bg-surface-container-lowest dark:bg-slate-900 p-8 rounded-xl border border-outline-variant/5 dark:border-slate-800">
 <h3 class="font-headline font-bold text-xl mb-6 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="material-symbols-outlined text-primary dark:text-blue-400">analytics</span>
                         Linguistik tahlil
                     </h3>
-<div class="space-y-6">
-<div>
-<div class="flex justify-between items-center mb-2">
-<span class="text-sm font-medium text-secondary">Ob'ektivlik darajasi</span>
-<span id="objScore" class="text-sm font-bold text-tertiary">0%</span>
-</div>
-<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div id="objBar" class="h-full bg-tertiary-container w-[0%] rounded-full transition-all duration-1000"></div>
-</div>
-</div>
-<div>
-<div class="flex justify-between items-center mb-2">
-<span class="text-sm font-medium text-secondary">Hissiy til ishlatilishi</span>
-<span id="emoScore" class="text-sm font-bold text-on-primary-container">Yuklanmoqda</span>
-</div>
-<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div id="emoBar" class="h-full bg-on-primary-container w-[0%] rounded-full transition-all duration-1000"></div>
-</div>
-</div>
-<div>
-<div class="flex justify-between items-center mb-2">
-<span class="text-sm font-medium text-secondary">Manbalar aniqligi</span>
-<span id="srcScore" class="text-sm font-bold text-tertiary">0%</span>
-</div>
-<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div id="srcBar" class="h-full bg-tertiary-container w-[0%] rounded-full transition-all duration-1000"></div>
-</div>
-</div>
+<div class="space-y-8">
+    <div class="relative h-[250px] w-full flex justify-center items-center">
+        <canvas id="analysisRadarChart"></canvas>
+    </div>
+    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-outline-variant/10">
+        <div class="text-center">
+            <span class="block text-[10px] font-black text-secondary dark:text-slate-500 uppercase">Obyektivlik</span>
+            <span id="objScoreVal" class="text-lg font-black text-primary dark:text-blue-400">0%</span>
+        </div>
+        <div class="text-center border-x border-outline-variant/10">
+            <span class="block text-[10px] font-black text-secondary dark:text-slate-500 uppercase">Hissiyot</span>
+            <span id="emoScoreVal" class="text-lg font-black text-primary dark:text-blue-400">0%</span>
+        </div>
+        <div class="text-center">
+            <span class="block text-[10px] font-black text-secondary dark:text-slate-500 uppercase">Manba</span>
+            <span id="srcScoreVal" class="text-lg font-black text-primary dark:text-blue-400">0%</span>
+        </div>
+    </div>
 </div>
 </div>
             <div class="bg-tertiary p-8 rounded-xl text-white">
@@ -224,11 +211,12 @@
                 </a>
             </div>
         </div>
+        </div>
     </div>
 </main>
 
 <!-- Footer -->
-<footer class="bg-[#f7fafc] dark:bg-slate-950 full-width border-t border-[#c4c6cf]/15 mt-auto">
+<footer class="bg-[#f7fafc] dark:bg-slate-950 full-width border-t border-[#c4c6cf]/15 dark:border-slate-800 mt-auto transition-colors">
     <div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
         <div class="flex flex-col items-center md:items-start gap-2">
             <span class="font-manrope font-bold text-[#002045] dark:text-blue-400 text-lg">VeracityUz</span>

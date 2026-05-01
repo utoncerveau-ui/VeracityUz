@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Algoritm | Veracity Uz</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="js/theme.js"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
         rel="stylesheet" />
@@ -38,21 +39,33 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="bg-mesh font-body text-on-background min-h-screen flex flex-col">
+<body class="bg-surface dark:bg-slate-950 text-on-background dark:text-white min-h-screen flex flex-col transition-colors">
     <!-- NavBar -->
     <nav
-        class="bg-white/80 backdrop-blur-md dark:bg-slate-900/80 full-width top-0 sticky z-50 border-b border-slate-200/20">
+        class="bg-white/80 backdrop-blur-md dark:bg-slate-900/80 full-width top-0 sticky z-50 border-b border-slate-200/10 transition-colors">
         <div class="flex justify-between items-center w-full px-8 h-16 max-w-7xl mx-auto">
             <div class="flex items-center gap-8">
                 <a href="landing_page.html"
                     class="text-2xl font-bold tracking-tighter text-[#002045] dark:text-blue-400 font-headline">VeracityUz</a>
-                <div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
-                    <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors"
-                        href="landing_page.html">Asosiy</a>
-                    <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] transition-colors"
-                        href="verification_dashboard.html">Tahlil</a>
-                    <a class="text-[#002045] dark:text-white border-b-2 border-[#002045] pb-1"
-                        href="algorithm.html">Algoritm</a>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center gap-6 font-manrope text-sm font-medium tracking-wide">
+                        <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors"
+                            href="landing_page.html">Asosiy</a>
+                        <a class="text-[#545f72] dark:text-slate-400 hover:text-[#002045] dark:hover:text-white transition-colors"
+                            href="verification_dashboard.html">Tahlil</a>
+                        <a class="text-[#002045] dark:text-white border-b-2 border-[#002045] dark:border-blue-400 pb-1"
+                            href="algorithm.html">Algoritm</a>
+                    </div>
+                    <button class="theme-toggle p-2 rounded-full hover:bg-outline-variant/10 text-secondary transition-all" title="Mavzuni o'zgartirish">
+                        <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+                        <span class="material-symbols-outlined hidden dark:block text-blue-400">light_mode</span>
+                    </button>
+                </div>
+                <div class="flex items-center gap-3 ml-4">
+                    <div id="scriptToggle" class="flex bg-surface-container-high dark:bg-slate-800 rounded-full p-1 border border-outline-variant/10 cursor-pointer select-none">
+                        <div id="latinOpt" class="px-3 py-1 text-[10px] font-black rounded-full bg-primary text-white transition-all">LAT</div>
+                        <div id="cyrillOpt" class="px-3 py-1 text-[10px] font-black rounded-full text-secondary dark:text-slate-500 transition-all">КИР</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,12 +74,12 @@
     <main class="flex-grow max-w-4xl mx-auto w-full px-8 py-20">
         <!-- Hero Section -->
         <div class="text-center mb-20" data-aos="fade-up">
-            <span class="text-primary font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Texnologiya</span>
-            <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-slate-900 line-tight">
+            <span class="text-primary dark:text-blue-400 font-bold tracking-[0.2em] text-xs uppercase mb-4 block transition-colors">Texnologiya</span>
+            <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-slate-900 dark:text-white line-tight transition-colors">
                 Haqiqatni qanday <br /> <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">aniqlaymiz?</span>
             </h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed transition-colors">
                 Veracity Uz zamonaviy sun'iy intellekt va real-vaqt rejimida qidiruv tizimlari integratsiyasidan
                 foydalanadi. Bizning jarayonimiz 4 ta asosiy bosqichdan iborat.
             </p>
@@ -74,39 +87,39 @@
 
         <!-- Step 1: ML Model -->
         <section class="mb-24 relative" data-aos="fade-up">
-            <div class="absolute -left-12 top-0 text-8xl font-black text-slate-100 -z-10">01</div>
+            <div class="absolute -left-12 top-0 text-8xl font-black text-slate-100 dark:text-slate-900 -z-10 transition-colors">01</div>
             <div class="flex flex-col md:flex-row gap-12 items-center">
                 <div class="flex-1">
-                    <h2 class="font-headline text-3xl font-bold mb-6">Lingvistik Patternlar Tahlili</h2>
-                    <p class="text-slate-600 leading-relaxed mb-6">
+                    <h2 class="font-headline text-3xl font-bold mb-6 dark:text-white transition-colors">Lingvistik Patternlar Tahlili</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 transition-colors">
                         Bizning Sun'iy Intellekt modelimiz <b>TF-IDF</b> (Term Frequency-Inverse Document Frequency)
                         texnologiyasidan foydalanib, matndagi so'zlarning ahamiyatini baholaydi.
                     </p>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                        <h4 class="font-bold text-sm text-primary mb-3">Logistic Regression Modeli</h4>
-                        <p class="text-sm text-slate-500">
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+                        <h4 class="font-bold text-sm text-primary dark:text-blue-400 mb-3 transition-colors">Logistic Regression Modeli</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-500 transition-colors">
                             Modelimiz o'zbek tilidagi minglab real va yolg'on xabarlar ustida o'qitilgan. U matnning
                             qurilishi, ishlatilgan iboralar va manipulyatsiya belgilarini (SHOK, DAHSHAT! kabi)
                             ultra-tezkorlik bilan aniqlaydi.
                         </p>
                     </div>
                 </div>
-                <div class="flex-1 bg-slate-900/5 p-8 rounded-2xl border border-slate-200/50">
+                <div class="flex-1 bg-slate-900/5 dark:bg-white/5 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-800 transition-colors">
                     <div class="space-y-4">
-                        <div class="h-10 bg-white rounded-lg w-full flex items-center px-4 justify-between">
+                        <div class="h-10 bg-white dark:bg-slate-900 rounded-lg w-full flex items-center px-4 justify-between transition-colors">
                             <span class="text-xs font-bold text-slate-400">Word Vectorization</span>
-                            <span class="text-[10px] bg-blue-100 text-blue-600 px-2 py-0.5 rounded">TF-IDF</span>
+                            <span class="text-[10px] bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded transition-colors">TF-IDF</span>
                         </div>
-                        <div class="h-10 bg-white rounded-lg w-3/4 flex items-center px-4 justify-between">
+                        <div class="h-10 bg-white dark:bg-slate-900 rounded-lg w-3/4 flex items-center px-4 justify-between transition-colors">
                             <span class="text-xs font-bold text-slate-400">Classification</span>
-                            <span class="text-[10px] bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded">LogReg</span>
+                            <span class="text-[10px] bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded transition-colors">LogReg</span>
                         </div>
-                        <div class="pt-4 border-t border-slate-200">
+                        <div class="pt-4 border-t border-slate-200 dark:border-slate-800 transition-colors">
                             <div class="flex justify-between text-[10px] font-bold text-slate-400 mb-1 uppercase">
                                 <span>Aniqlik</span>
                                 <span>~92%</span>
                             </div>
-                            <div class="h-1 w-full bg-slate-200 rounded-full">
+                            <div class="h-1 w-full bg-slate-200 dark:bg-slate-800 rounded-full transition-colors">
                                 <div class="h-1 bg-blue-600 rounded-full w-[92%]"></div>
                             </div>
                         </div>
@@ -117,26 +130,26 @@
 
         <!-- Step 2: Source Verification -->
         <section class="mb-24 relative" data-aos="fade-up">
-            <div class="absolute -right-12 top-0 text-8xl font-black text-slate-100 -z-10">02</div>
+            <div class="absolute -right-12 top-0 text-8xl font-black text-slate-100 dark:text-slate-900 -z-10 transition-colors">02</div>
             <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
                 <div class="flex-1">
-                    <h2 class="font-headline text-3xl font-bold mb-6">Real-vaqt rejimida Manbalar Tekshiruvi</h2>
-                    <p class="text-slate-600 leading-relaxed mb-6">
-                        AI modeldan o'tgan xabar darhol <b>DuckDuckGo Search Engine</b> orqali qidiruvga beriladi. Biz
+                    <h2 class="font-headline text-3xl font-bold mb-6 dark:text-white transition-colors">Real-vaqt rejimida Manbalar Tekshiruvi</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 transition-colors">
+                        AI modeldan o'tgan xabar darhol <b>RSS Poll</b> orqali rasmiy manbalarda qidiriladi. Biz
                         "Xabar aslida bormi?" va "Uni kimlar nashr etdi?" degan savollarga javob izlaymiz.
                     </p>
                     <ul class="space-y-3">
-                        <li class="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                        <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 font-medium transition-colors">
                             <span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
                             Rasmiy davlat portallari tahlili (UZA, Gazeta.uz)
                         </li>
-                        <li class="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                        <li class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 font-medium transition-colors">
                             <span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
                             Mustaqil va nufuzli OAV tahlili (Kun.uz, Daryo.uz)
                         </li>
                     </ul>
                 </div>
-                <div class="flex-1 bg-blue-600/5 p-8 rounded-2xl border border-blue-200/50">
+                <div class="flex-1 bg-blue-600/5 dark:bg-blue-900/5 p-8 rounded-2xl border border-blue-200/50 dark:border-slate-800 transition-colors">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
                         class="rounded-xl shadow-lg grayscale hover:grayscale-0 transition-all duration-700"
                         alt="Data visualization" />
@@ -146,11 +159,11 @@
 
         <!-- Step 3: Domain Whitelist -->
         <section class="mb-24 relative" data-aos="fade-up">
-            <div class="absolute -left-12 top-0 text-8xl font-black text-slate-100 -z-10">03</div>
+            <div class="absolute -left-12 top-0 text-8xl font-black text-slate-100 dark:text-slate-900 -z-10 transition-colors">03</div>
             <div class="flex flex-col md:flex-row gap-12 items-center">
                 <div class="flex-1">
-                    <h2 class="font-headline text-3xl font-bold mb-6">Ishonchlilik Reytingi (Whitelist)</h2>
-                    <p class="text-slate-600 leading-relaxed">
+                    <h2 class="font-headline text-3xl font-bold mb-6 dark:text-white transition-colors">Ishonchlilik Reytingi (Whitelist)</h2>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed transition-colors">
                         Topilgan har bir havola bizning <b>"Ishonchli Domenlar"</b> ro'yxatimiz bilan solishtiriladi.
                         Agar xabar Kun.uz yoki Daryo.uz kabi tasdiqlangan saytlarda topilsa, uning "Haqiqiylik" darajasi
                         avtomatik ravishda oshadi.
@@ -158,16 +171,16 @@
                 </div>
                 <div class="flex-1 grid grid-cols-2 gap-4">
                     <div
-                        class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center font-bold text-xs text-slate-400 italic">
+                        class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 text-center font-bold text-xs text-slate-400 italic transition-colors">
                         kun.uz</div>
                     <div
-                        class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center font-bold text-xs text-slate-400 italic">
+                        class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 text-center font-bold text-xs text-slate-400 italic transition-colors">
                         daryo.uz</div>
                     <div
-                        class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center font-bold text-xs text-slate-400 italic">
+                        class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 text-center font-bold text-xs text-slate-400 italic transition-colors">
                         gazeta.uz</div>
                     <div
-                        class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center font-bold text-xs text-slate-400 italic">
+                        class="bg-white dark:bg-slate-900 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 text-center font-bold text-xs text-slate-400 italic transition-colors">
                         uza.uz</div>
                 </div>
             </div>
@@ -175,51 +188,51 @@
 
         <!-- Examples Section -->
         <section id="examples" class="mb-24 scroll-mt-20" data-aos="fade-up">
-            <h2 class="font-headline text-3xl font-bold mb-10 text-center">Tahlil misollari</h2>
+            <h2 class="font-headline text-3xl font-bold mb-10 text-center dark:text-white transition-colors">Tahlil misollari</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Real Example -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
                     <div class="flex items-center gap-2 mb-4">
                         <span
-                            class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Haqiqiy
+                            class="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-colors">Haqiqiy
                             xabar</span>
                     </div>
-                    <p class="text-slate-800 font-medium mb-6 italic">"O‘zbekistonga kelgan turistlar soni qariyb 1,8
+                    <p class="text-slate-800 dark:text-slate-200 font-medium mb-6 italic transition-colors">"O‘zbekistonga kelgan turistlar soni qariyb 1,8
                         mlnga yetdi"</p>
                     <div class="space-y-4">
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-slate-400">AI Bashorati</span>
-                            <span class="text-green-600 font-bold">REAL (94%)</span>
+                            <span class="text-green-600 dark:text-green-400 font-bold">REAL (94%)</span>
                         </div>
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-slate-400">Manbalar</span>
-                            <span class="text-slate-600 font-medium italic">Kun.uz, Gazeta.uz</span>
+                            <span class="text-slate-600 dark:text-slate-400 font-medium italic transition-colors">Kun.uz, Gazeta.uz</span>
                         </div>
-                        <div class="pt-4 border-t border-slate-50 text-[11px] text-slate-500 leading-relaxed">
+                        <div class="pt-4 border-t border-slate-50 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed transition-colors">
                             Xulosa: ML model matnni obyektiv deb topdi va rasmiy OAVlarda ushbu xabar tasdiqlandi.
                         </div>
                     </div>
                 </div>
 
                 <!-- Fake/Suspicious Example -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
                     <div class="flex items-center gap-2 mb-4">
                         <span
-                            class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Shubhali
+                            class="bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider transition-colors">Shubhali
                             xabar</span>
                     </div>
-                    <p class="text-slate-800 font-medium mb-6 italic">"NASA Oydan ulkan oltin konlarini topgani haqida
+                    <p class="text-slate-800 dark:text-slate-200 font-medium mb-6 italic transition-colors">"NASA Oydan ulkan oltin konlarini topgani haqida
                         shoshilinch xabar!"</p>
                     <div class="space-y-4">
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-slate-400">AI Bashorati</span>
-                            <span class="text-red-600 font-bold">FAKE (87%)</span>
+                            <span class="text-red-600 dark:text-red-400 font-bold">FAKE (87%)</span>
                         </div>
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-slate-400">Manbalar</span>
                             <span class="text-slate-400">Topilmadi</span>
                         </div>
-                        <div class="pt-4 border-t border-slate-50 text-[11px] text-slate-500 leading-relaxed">
+                        <div class="pt-4 border-t border-slate-50 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed transition-colors">
                             Xulosa: Matnda "Shoshilinch" kabi buzzwordlar ishlatilgan. Rasmiy NASA yoki OAV saytlarida
                             bunday ma'lumot yo'q.
                         </div>
@@ -229,9 +242,9 @@
         </section>
 
         <!-- Step 4: Final Override -->
-        <div class="bg-slate-900 text-white rounded-3xl p-12 text-center" data-aos="zoom-in">
+        <div class="bg-slate-900 dark:bg-blue-900/40 text-white rounded-3xl p-12 text-center transition-colors" data-aos="zoom-in">
             <h2 class="font-headline text-3xl font-bold mb-6">Inson O'zgarmas Prinsiplari</h2>
-            <p class="text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10">
+            <p class="text-slate-400 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10 transition-colors">
                 Agar AI model xabarni "Fake" deb o'ylasa-yu, lekin bizning qidiruv algoritmimiz uni ishonchli manbada
                 topsa (masalan, 100% ishonch bilan Kun.uz saytida), tizim AI qarorini bekor qiladi va sizga "Haqiqiy
                 Ma'lumot" deb javob beradi. <b>Fakt har doim algoritmdan kuchliroqdir.</b>
@@ -265,9 +278,8 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-    </script>
+    <script src="js/animations.js"></script>
+    <script src="js/script_toggle.js"></script>
 </body>
 
 </html>
